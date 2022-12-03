@@ -1,2 +1,12 @@
 class ApplicationController < ActionController::Base
+    # before_action :check_auth
+
+    def check_auth
+        # session[:current_user_id] = 11
+        redirect_to '/', alert: "Вы должны войти в систему для просмотра содержимого" unless session[:current_user_id]
+      end
+
+    def not_authed_yet
+        redirect_to '/', alert: "Вы уже в системе" if session[:current_user_id]
+    end
 end
