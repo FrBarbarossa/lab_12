@@ -7,6 +7,7 @@ class Result < ApplicationRecord
   before_save :count_result
 
   def number_must_be_greater_than_zero
+    return if errors.size > 0
     if input <= 0
       errors.add(:expiration_date, "can't be less or equal zero")
     end
