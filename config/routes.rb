@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   get "/register", to: "auth#register"
   get "/login", to: "auth#login"
   get "/logout", to: "auth#logout"
-  post "/register", to: "auth#reguser"
-  post "/login", to: "auth#loguser"
+  get "/showuser", to: "auth#showuser"
+  post "/register", to: "auth#register"
+  post "/login", to: "auth#login"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

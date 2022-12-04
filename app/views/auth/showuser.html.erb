@@ -1,0 +1,13 @@
+<table class="table">
+    <tr>
+        <th>id</th>
+        <th>Login</th>
+    </tr>
+
+<%@user.each do |cort|%>
+    <tr>
+        <td><%= cort.id %></td>
+        <td><%= cort.login%></td>
+    </tr>
+    <%end%>
+</table>
