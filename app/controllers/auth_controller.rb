@@ -1,5 +1,6 @@
 class AuthController < ApplicationController
     before_action :not_authed_yet, only: [:register, :login]
+    after_action :authenticate, only: [:register, :login]
     # Вопрос к безопасности такого действия
     skip_before_action :verify_authenticity_token
 
