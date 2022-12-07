@@ -22,13 +22,31 @@ RSpec.describe "User is not logged in",:js => true, :type => :system do
         expect(page).to have_button("Войти")
     end
     
+
+    context "user register in" do
+      it "allows to make calculations" do
+        visit "/register"
+        fill_in "login", with: "TestTest"
+        fill_in "password", with: "Testpassw"
+        fill_in "password_confirmation", with: "Testpassw"
+        click_button "Зарегистрироваться"
+
+        expect(page).to have_button("Найти")
+        expect(page.current_path).to eq ('/')
+        fill_in "number", with: "100"
+        click_button ("Найти")
+        # expect(page).to have_selector("table tr td")
+        all("table tr td").each_with_index{|val, ind| if (ind - 1) % 3 == 0 then expect(val).to have_text(output[(ind-1)/3]) end}
+      end
+    end
+
   end
 
   # Тест невозможности вычислений без ввода логина/пароля
   RSpec.describe PalindromesController, type: :request do
-    describe "get index page" do
-      context "check index page by root" do
-        it 'has code 200' do
+    describe "get result page" do
+      context "user unlogged" do
+        it 'returns alert' do
           get 'http://localhost:3000/result?number=10'
           expect(response).to redirect_to("/")
           follow_redirect!
