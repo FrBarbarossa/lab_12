@@ -1,0 +1,11 @@
+<div id='out'></div>
+
+<h1>Войти в аккаунт</h1>
+
+<%= form_with url: '/login' do |form| %>
+  <p><%= form.label :login, "Введите логин" %></p>
+  <p><%= form.text_field :login, placeholder: 'login', class: 'form-control', id: 'login' %></p>
+  <p><%= form.label :password, "Введите пароль" %></p>
+  <p><%= form.password_field :password, class: 'form-control', id: 'pass' %></p>
+  <p><%= form.submit("Войти", id: 'btn') %></p>
+<% end %>
